@@ -14,26 +14,36 @@ final class LoginViewController: UIViewController {
     
     @IBOutlet var logInButton: UIButton!
     
-    // MARK: - Public Properties
-    
     // MARK: - Private Properties
     private let userName = "Maks"
     private let password = "234"
     
-    
     // MARK: - Overrides Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super .touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        guard userNameTF.text == userName, passwordTF.text == password else {
+            showAlert(
+                withTitle: "Ошибка!",
+                andMessage: "Введите корректное имя пользователя или пароль."
+            )
+            return false
+        }
+        return true
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let welcomeVC = segue.destination as? WelcomeViewController
+        welcomeVC?.greeting = "Hellow, \(userNameTF.text ?? "")!"
+    }
+    
     // MARK: - IB Actions
-
-    // MARK: - Public Methods
+    @IBAction func unwind(for segue: UIStoryboardSegue){
+        userNameTF.text = ""
+        passwordTF.text = ""
+    }
     
     // MARK: - Private Methods
     private func showAlert(withTitle title: String, andMessage message: String){
@@ -42,7 +52,12 @@ final class LoginViewController: UIViewController {
             message: message,
             preferredStyle: .alert
         )
-        present(alert, animated:true)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.userNameTF.text = ""
+            self.passwordTF.text = ""
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
 

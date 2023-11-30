@@ -13,23 +13,13 @@ final class WelcomeViewController: UIViewController {
     @IBOutlet var welcomeUserLabel: UILabel!
     
     // MARK: - Public Properties
-    var greeting: String?
-
-    // MARK: - Private Properties
-    
-    // MARK: - Initializers
+var greeting = "Hellow, User!"
     
     // MARK: - Overrides Methods
-   
-    
-    // MARK: - IB Actions
-    @IBAction func cancelButtonAction() {
-        dismiss(animated: true)
+    override func viewDidLoad() {
+        welcomeUserLabel.text = greeting
     }
-    
-    // MARK: - Public Methods
-    
-    // MARK: - Private Methods
+
 }
 
 
