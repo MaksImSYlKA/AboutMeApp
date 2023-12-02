@@ -15,47 +15,57 @@ final class LoginViewController: UIViewController {
     @IBOutlet var logInButton: UIButton!
     
     // MARK: - Private Properties
-    private let userName = "Maks"
-    private let password = "234"
+    private let user = "User"
+    private let password = "Password"
     
     // MARK: - Overrides Methods
+    override func viewDidLoad() {
+        userNameTF.text = user
+        passwordTF.text = password
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super .touchesBegan(touches, with: event)
-        self.view.endEditing(true)
+        view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let welcomeVC = segue.destination as? WelcomeViewController else {return}
+        welcomeVC.greeting = "Hellow, \(userNameTF.text ?? "")!"
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        guard userNameTF.text == userName, passwordTF.text == password else {
+        guard userNameTF.text == user, passwordTF.text == password else {
             showAlert(
-                withTitle: "Ошибка!",
-                andMessage: "Введите корректное имя пользователя или пароль."
-            )
+                withTitle: "Error!",
+                andMessage: "Input correct user name or password."
+            ) {
+                self.passwordTF.text = ""
+            }
             return false
         }
         return true
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let welcomeVC = segue.destination as? WelcomeViewController
-        welcomeVC?.greeting = "Hellow, \(userNameTF.text ?? "")!"
+    // MARK: - IB Actions
+    @IBAction func remindCredentials(_ sender: UIButton) {
+        sender.tag == 0
+            ? showAlert(withTitle: "Oops!", andMessage: "Your name is \(user) 😉")
+            : showAlert(withTitle: "Oops!", andMessage: "Your password is \(password) 😉")
     }
     
-    // MARK: - IB Actions
-    @IBAction func unwind(for segue: UIStoryboardSegue){
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
         userNameTF.text = ""
         passwordTF.text = ""
     }
     
     // MARK: - Private Methods
-    private func showAlert(withTitle title: String, andMessage message: String){
+    private func showAlert(withTitle title: String, andMessage message: String, completion: (() -> Void)? = nil){
         let alert = UIAlertController(
             title: title,
             message: message,
             preferredStyle: .alert
         )
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            self.userNameTF.text = ""
-            self.passwordTF.text = ""
+            completion?()
         }
         alert.addAction(okAction)
         present(alert, animated: true)
