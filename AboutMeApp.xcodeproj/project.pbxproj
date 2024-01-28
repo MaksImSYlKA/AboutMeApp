@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB07E8E42B66DD03003D0DAF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07E8E32B66DD03003D0DAF /* Model.swift */; };
 		BBCCF08B2B164DB300346AEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCCF08A2B164DB300346AEE /* AppDelegate.swift */; };
 		BBCCF08D2B164DB300346AEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCCF08C2B164DB300346AEE /* SceneDelegate.swift */; };
 		BBCCF08F2B164DB300346AEE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCCF08E2B164DB300346AEE /* LoginViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB07E8E32B66DD03003D0DAF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BBCCF0872B164DB300346AEE /* AboutMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AboutMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCCF08A2B164DB300346AEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBCCF08C2B164DB300346AEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				BBCCF08E2B164DB300346AEE /* LoginViewController.swift */,
 				BBCCF0A02B164F4000346AEE /* WelcomeViewController.swift */,
 				BBCCF0902B164DB300346AEE /* Main.storyboard */,
+				BB07E8E32B66DD03003D0DAF /* Model.swift */,
 				BBCCF0932B164DB400346AEE /* Assets.xcassets */,
 				BBCCF0952B164DB400346AEE /* LaunchScreen.storyboard */,
 				BBCCF0982B164DB400346AEE /* Info.plist */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB07E8E42B66DD03003D0DAF /* Model.swift in Sources */,
 				BBCCF08F2B164DB300346AEE /* LoginViewController.swift in Sources */,
 				BBCCF0A12B164F4000346AEE /* WelcomeViewController.swift in Sources */,
 				BBCCF08B2B164DB300346AEE /* AppDelegate.swift in Sources */,
